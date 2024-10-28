@@ -11,8 +11,11 @@ import br.com.fabioporto.teste_cliente_login.repository.UsuarioRepository;
 @Service
 public class AuthorizationService implements UserDetailsService{
 
-    @Autowired
     UsuarioRepository usuarioRepository;
+
+    public AuthorizationService(UsuarioRepository usuarioRepository) {
+        this.usuarioRepository = usuarioRepository;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

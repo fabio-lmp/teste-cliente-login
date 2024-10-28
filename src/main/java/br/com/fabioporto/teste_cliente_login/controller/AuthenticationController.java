@@ -21,12 +21,16 @@ import br.com.fabioporto.teste_cliente_login.security.TokenService;
 @RequestMapping("/auth")
 public class AuthenticationController {
     
-    @Autowired
     private AuthenticationManager authenticationManager;
-    @Autowired
     private UsuarioRepository usuarioRepository;
-    @Autowired
     private TokenService tokenService;
+
+    public AuthenticationController(AuthenticationManager authenticationManager, UsuarioRepository usuarioRepository,
+            TokenService tokenService) {
+        this.authenticationManager = authenticationManager;
+        this.usuarioRepository = usuarioRepository;
+        this.tokenService = tokenService;
+    }
 
     @SuppressWarnings({ "rawtypes"})
     @PostMapping("/login")
